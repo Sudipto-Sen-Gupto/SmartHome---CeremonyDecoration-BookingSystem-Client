@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import UseAuthContext from '../../customHook/UseAuthContext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+               
+            const {user,logOut}=UseAuthContext();
+
+            const handleLogout=()=>{
+                logOut().then(()=>{
+                  toast('Log Out successfully')
+                })
+            }
 
            const list= <nav className='flex flex-col gap-5 md:flex-row '>
                      
@@ -39,8 +49,21 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-   <Link className='btn btn-primary' to={'/authlayout/login'}>Login</Link>
+
+   {
+       user?<> 
+           <img src={user?user.photoURL:''} title={user.displayName}
+          className="w-14 h-14 rounded-full mx-2" alt="" />          
+ 
+        <button className='btn btn-primary' onClick={handleLogout}>Log Out</button></> 
+        :
+        <>
+        <Link className='btn btn-primary' to={'/authlayout/login'}>Login</Link>
    <Link className='btn btn-outline' to={'/authlayout/register'}>SingUp</Link>
+       </>
+   }
+
+   
   </div>
 </div>
         </div>
