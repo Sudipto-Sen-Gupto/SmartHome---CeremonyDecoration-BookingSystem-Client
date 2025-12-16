@@ -9,6 +9,7 @@ import About from '../../pages/aboutus/About';
 import Login from '../../Layout/Authlayout/login/Login';
 import Register from '../../Layout/Authlayout/register/Register';
 import Authlayout from '../../Layout/Authlayout/Authhome/Authlayout';
+import Privateroute from '../PrivateRoute/Privateroute';
 
 export const router = createBrowserRouter([
     { 
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'services',
-                Component:Service
+                element: <Privateroute><Service></Service></Privateroute>
             },
             {
                 path:'coverage',

@@ -3,9 +3,12 @@ import { useForm } from 'react-hook-form';
 import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
+import { useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
-
+         
+  const navigate= useNavigate();
+  const location=useLocation();
   const {userLogin}=UseAuthContext()
   const {register,handleSubmit,formState:{errors}}=useForm();
 
@@ -17,7 +20,10 @@ const Login = () => {
                const pass=data.password;
 
          userLogin(email,pass).then(()=>{
+
+
            toast('Logged in successfully')
+              navigate(`${location.state ? location.state : '/'}`) 
          }).catch(err=>console.log(err.message))
 
 

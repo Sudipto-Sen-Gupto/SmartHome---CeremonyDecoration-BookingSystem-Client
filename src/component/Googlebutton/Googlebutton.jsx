@@ -1,14 +1,17 @@
 import React from 'react';
 import UseAuthContext from '../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
+import { useLocation, useNavigate } from 'react-router';
 
 const Googlebutton = () => {
 
     const {googleLogin}=UseAuthContext();
-
+     const navigate=useNavigate();
+     const location=useLocation(); 
     const handleGoogle=()=>{
         googleLogin().then(()=>{
             toast('Logged with google successfully')
+            navigate(`${location.state?location.state:'/'}`)
         })
     }
     return (

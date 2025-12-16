@@ -4,10 +4,12 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
+import { useNavigate } from 'react-router';
 
 const Register = () => {
          
    const{signUp}=UseAuthContext()
+    const navigate=useNavigate();
 
        const {register,handleSubmit,formState:{errors}}=useForm();
 
@@ -32,7 +34,7 @@ const Register = () => {
                  
                 console.log(res);
                toast('Registration is successfully done')     
-
+                navigate('/')
              }).catch(err=>console.log(err.message))
         
       }
