@@ -3,25 +3,44 @@ import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext=createContext();
 
 import { auth } from '../../Auth';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+
+
 
 const Authprovider = ({children}) => {
 
-
+    
     const [user,setUser]=useState(null)
     const [loader,setLoader]=useState(true)  
+     
+     const googleProvider=new GoogleAuthProvider();
+     
 
-    const signUp=(email,pass)=>{
+    const signUp=async(email,pass,UserName,photo_URL)=>{
          
-       return createUserWithEmailAndPassword(auth,email,pass)
+      
+       const register=await createUserWithEmailAndPassword(auth,email,pass);
+
+      await  updateProfile(auth.currentUser,{
+                
+               displayName:UserName,
+               photoURL:photo_URL
+       })
+         
+       setLoader(true)
+       return register;
     }
 
     const userLogin=(email,pass)=>{
+
+        setLoader(true)
          return signInWithEmailAndPassword(auth,email,pass)
     }
 
     const googleLogin=()=>{
-        return signInWithPopup(auth);
+
+        setLoader(true)
+        return signInWithPopup(auth,googleProvider);
     }
 
      
@@ -39,6 +58,7 @@ const Authprovider = ({children}) => {
 
 
     const logOut=()=>{
+        setLoader(true)
         return signOut(auth);
     }
       
