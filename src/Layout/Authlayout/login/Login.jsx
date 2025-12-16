@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
+import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 
 const Login = () => {
 
@@ -57,7 +58,7 @@ const Login = () => {
         </fieldset>
              </form>
 
-         
+         <Googlebutton></Googlebutton>
       </div>
     </div>
   </div>

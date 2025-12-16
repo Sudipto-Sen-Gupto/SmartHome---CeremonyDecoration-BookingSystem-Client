@@ -3,6 +3,7 @@ import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 
 const Register = () => {
          
@@ -82,6 +83,8 @@ const Register = () => {
         </fieldset>
 
         </form>
+
+        <Googlebutton></Googlebutton>
       </div>
     </div>
   </div>
