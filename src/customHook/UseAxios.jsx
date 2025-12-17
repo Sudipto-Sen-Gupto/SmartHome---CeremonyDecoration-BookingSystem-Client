@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 
-const UseAxios = () => {
-    const instance=axios.create({
+
+ const instance=axios.create({
         baseURL:'http://localhost:3000/'
     })
+const UseAxios = () => {
+    
     return instance
 };
 
