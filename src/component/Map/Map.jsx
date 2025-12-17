@@ -13,7 +13,7 @@ const Map = () => {
          queryKey:['coverage'],
          queryFn:async()=>{
             const res= await axiosInstance.get('/maplocation');
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
          }
       })
@@ -27,7 +27,7 @@ const Map = () => {
 
          const districtLocation= locations.filter(loc=>loc.district.toLowerCase().includes(searchLocation.toLowerCase()));
 
-         console.log(districtLocation);
+        //  console.log(districtLocation);
 
          if(districtLocation){
              
@@ -43,12 +43,12 @@ const Map = () => {
         <div >
 
             <div>
-                location={locations.length}
+                {/* location={locations.length} */}
             </div>
 
             <div>
                 <label className="input">
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} className='flex items-center'>
         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
@@ -66,8 +66,8 @@ const Map = () => {
 </label>
             </div>
            
-          <div className='w-full h-[800px] border'>
-             <MapContainer ref={mapRef} className='w-full h-[800px]'  center={bangladeshPosition} zoom={8} scrollWheelZoom={false}>
+          <div className=' w-100 md:w-full h-200  border'>
+             <MapContainer ref={mapRef} className='w-full h-[800px]'  center={bangladeshPosition} zoom={7} scrollWheelZoom={false}>
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import banner from './banner.jpg';
+import { Link } from 'react-router';
 
 const texts = [
   "Smart Home Solutions",
@@ -30,9 +31,9 @@ const Herosection = () => {
             {text}
           </motion.h1>
         ))}
-         <button className="mt-6 px-6 py-3 bg-white text-black rounded hover:bg-gray-200">
+         <Link to={'/services'} className="mt-6 px-6 py-3 bg-white text-black rounded hover:bg-gray-200">
   Explore Services
-</button>
+</Link>
       </div>
      
     </section>
