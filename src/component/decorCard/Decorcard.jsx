@@ -1,9 +1,10 @@
 import React from 'react';
 import { Star, MapPin } from "lucide-react";
+import { Link } from 'react-router';
 
 const Decorcard = ({decorPackage:data}) => {
        
-    
+   
     // console.log(data);
     
     return (
@@ -46,9 +47,9 @@ const Decorcard = ({decorPackage:data}) => {
           <p className="text-base font-semibold text-gray-800">
             ৳{data.min_price.toLocaleString()} – ৳{data.max_price.toLocaleString()}
           </p>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-black rounded-xl hover:bg-gray-800 transition">
+          <Link to={`viewdetails/${data._id}`} className="btn btn-neutral text-white  rounded-xl hover:bg-gray-800 transition">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
