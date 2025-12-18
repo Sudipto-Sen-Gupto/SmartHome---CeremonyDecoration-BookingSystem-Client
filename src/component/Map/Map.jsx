@@ -74,8 +74,8 @@ const Map = () => {
   />
 
   {
-    locations.map(location=>{
-        return  <Marker position={[location.latitude,location.longitude]}>
+    locations.map((location,index)=>{
+        return  <Marker key={index} position={[location.latitude,location.longitude]}>
     <Popup>
      {location.covered_area.join(',')}
     </Popup>
