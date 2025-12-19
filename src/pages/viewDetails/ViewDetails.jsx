@@ -4,25 +4,29 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { Star, MapPin, Clock, CheckCircle } from "lucide-react";
 
-import UseAxios from "../../customHook/UseAxios";
+import {format} from 'date-fns'
 import UseAuthContext from "../../customHook/UseAuthContext";
+import UseSecureAxios from "../../customHook/UseSecureAxios";
+import Swal from "sweetalert2";
 
 const ViewDetails = () => {
   const { id } = useParams();
   const { user } = UseAuthContext();
-  const axiosInstance = UseAxios();
-
+   
+  const axiosSecure=UseSecureAxios();
   const modalRef = useRef();
   const [modal, setModal] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
 
   const { register, handleSubmit, setValue } = useForm();
 
-  // Fetch decoration details
+ 
   const { data: decor, isLoading } = useQuery({
     queryKey: ["decoration", id],
+     enabled: !!user, 
+     retry: false,
     queryFn: async () => {
-      const res = await axiosInstance.get(`/decorPack/${id}`);
+      const res = await axiosSecure.get(`/decorPack/${id}`);
       return res.data;
     },
   });
@@ -35,12 +39,68 @@ const ViewDetails = () => {
   };
 
   const handleBooking = (formData) => {
-    console.log("Booking Data:", formData);
-    modalRef.current.close();
+
+     const cost=formData.price;
+      const decoratorLocation=formData.decoratorLocation;
+      const customerLocation=formData.userDistrict;
+        
+      let totalCost=0;
+      if(decoratorLocation===customerLocation){
+           totalCost=cost+(cost*.2)
+          
+      }
+       
+      else{
+               totalCost=cost+(cost*.3);
+               
+      }
+           
+      const createdAt=format(new Date(), "dd MMM yyyy, hh:mm a")
+          const status='pending'
+      const bookingData={...formData,totalCost,createdAt,status}
+
+    console.log("Booking Data:", bookingData);
+
+        Swal.fire({
+                    title: "Are you sure?",
+                    text: `Your total cost will ${totalCost} TK by including decorator transport cost.`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                     cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes,Confirm It"
+                     }).then((result) => {
+                      if (result.isConfirmed) {
+                            
+                      
+
+                        axiosSecure.post('/packageDetails',bookingData).then((res)=>{
+
+                             console.log(res.data);
+                             if(res.data.insertedId){
+                                    Swal.fire({
+                                     title: "Done",
+                                     text: "Your package is booked.",
+                                          icon: "success"
+                        });
+
+                                 
+                             }
+                                
+                         }).catch(err=>console.log(err.message))
+
+
+                  
+                           }
+});
+
+     modalRef.current.close();
   };
 
   if (isLoading) return <p className="text-center">Loading...</p>;
+      
 
+  
   return (
     <div className="max-w-6xl mx-auto p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-3xl shadow-xl">
     
@@ -211,7 +271,7 @@ const ViewDetails = () => {
             <button
               disabled={!selectedPrice}
               className="btn btn-primary w-full"
-            >
+           >
               Confirm Booking
             </button>
           </form>

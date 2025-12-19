@@ -13,27 +13,31 @@ const UseSecureAxios = () => {
      const navigate=useNavigate();
     useEffect(()=>{
         const myReqInterceptors= instance.interceptors.request.use((config)=>{
-
-            config.headers.Authorization=`Bearer ${user?.accessToken}`
+                  
+            if(user?.accessToken){
+                   config.headers.Authorization=`Bearer ${user.accessToken}`
+            }
+           
             return config;
         })
          
-         const myResInterceptors= instance.interceptors.response.use((response)=>{
-            return response
-         },(error)=>{
-              console.log(error);
-              if(error.status===401 || error.status===403){
-                logOut().then(()=>{
-                    navigate('/authlayout/login')
-                })
-              }
+        //  const myResInterceptors= instance.interceptors.response.use((response)=>{
+        //     return response
+        //  },(error)=>{
+        //       console.log(error);
+        //        const status = error?.response?.status;
+        //       if(status===401 || status===403){
+        //         logOut().then(()=>{
+        //             navigate('/authlayout/login')
+        //         })
+        //       }
 
-              return Promise.reject(error);
-         })
+        //       return Promise.reject(error);
+        //  })
 
         return()=>{
             instance.interceptors.request.eject(myReqInterceptors);
-            instance.interceptors.response.eject(myResInterceptors);
+            // instance.interceptors.response.eject(myResInterceptors);
         }
     },[user,navigate,logOut])
 

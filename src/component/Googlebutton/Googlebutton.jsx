@@ -9,7 +9,8 @@ const Googlebutton = () => {
      const navigate=useNavigate();
      const location=useLocation(); 
     const handleGoogle=()=>{
-        googleLogin().then(()=>{
+        googleLogin().then((res)=>{
+            console.log(res);
             toast('Logged with google successfully')
             navigate(`${location.state?location.state:'/'}`)
         })

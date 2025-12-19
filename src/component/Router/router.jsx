@@ -11,6 +11,8 @@ import Register from '../../Layout/Authlayout/register/Register';
 import Authlayout from '../../Layout/Authlayout/Authhome/Authlayout';
 import Privateroute from '../PrivateRoute/Privateroute';
 import ViewDetails from '../../pages/viewDetails/ViewDetails';
+import Dashboard from '../../pages/Dashboard/Dashboard';
+import Payment from '../../pages/Dashboard/Payment';
 
 export const router = createBrowserRouter([
     { 
@@ -59,6 +61,15 @@ export const router = createBrowserRouter([
             Component:Register
         }
         ]
+        },
+        {
+            path:'/dashboard',
+            element:  <Privateroute><Dashboard></Dashboard></Privateroute> ,
+            children:[{
+                path:'payment',
+                element: <Privateroute><Payment></Payment></Privateroute>
+                
+            }]
         }
 
 ])

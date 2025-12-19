@@ -20,6 +20,7 @@ const Navbar = () => {
                      <NavLink to={'/coverage'}>Coverage</NavLink>
                      <NavLink to={'/contact'}>Contact</NavLink>
                      <NavLink to={'/about'}>About</NavLink>
+                     <NavLink to={'/dashboard'}>Dashboard</NavLink>
            </nav>
       
     return (
