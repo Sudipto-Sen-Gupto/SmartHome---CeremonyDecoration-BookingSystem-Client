@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
          
@@ -11,7 +12,7 @@ const Login = () => {
   const location=useLocation();
   const {userLogin}=UseAuthContext()
   const {register,handleSubmit,formState:{errors}}=useForm();
-
+   const [show,setShow]=useState(false)
   const handleLog=(data)=>{
                console.log(data);
 
@@ -54,14 +55,19 @@ const Login = () => {
               errors.email?.type==='required' && <p className='text-red-500'>Need a valid Email</p>
             }
 
-          <label className="label">Password</label>
-          <input type="password" {...register('password',{required:true})} className="input" placeholder="Password" />
+          <div className='relative'>
+            <label className="label">Password</label>
+          <input type={show?'text':'password'} {...register('password',{required:true})} className="input" placeholder="Password" />
           {
             errors.password?.type==='required' && <p className='text-red-500'>Need password</p>
           }
+
+          <p className='absolute top-6 right-6' onClick={()=>setShow(!show)}>{show?<Eye />:<EyeOff />}</p>
+          </div>
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">Login</button>
         </fieldset>
+        <p className='font-bold'>Create an account? <Link className='text-blue-500 underline' to='/authlayout/register'>Register</Link></p>
              </form>
 
          <Googlebutton></Googlebutton>

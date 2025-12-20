@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { Star, MapPin, Clock, CheckCircle } from "lucide-react";
@@ -37,6 +37,8 @@ const ViewDetails = () => {
     setValue("price", "");
     modalRef.current.showModal();
   };
+     
+   const navigate=useNavigate();
 
   const handleBooking = (formData) => {
 
@@ -78,6 +80,9 @@ const ViewDetails = () => {
 
                              console.log(res.data);
                              if(res.data.insertedId){
+                                     
+                                    navigate('/dashboard')
+
                                     Swal.fire({
                                      title: "Done",
                                      text: "Your package is booked.",
@@ -201,7 +206,7 @@ const ViewDetails = () => {
             <input
               {...register("packageName")}
               defaultValue={modal?.title}
-              readOnly
+             
               className="input w-full"
             />
 

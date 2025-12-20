@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Register = () => {
          
    const{signUp}=UseAuthContext()
     const navigate=useNavigate();
-
+      const[show,setShow]=useState(false);
        const {register,handleSubmit,formState:{errors}}=useForm();
 
       const handleRegister=async(data)=>{
@@ -44,7 +45,7 @@ const Register = () => {
           <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
+      <h1 className="text-5xl font-bold">Register now!</h1>
       
     </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -64,8 +65,9 @@ const Register = () => {
             errors.email?.type==='required'&& <p className='text-red-500'>Need a valid email</p>
           }
 
-          <label className="label">Password</label>
-          <input type="password" {...register('password',{required:true,minLength:6, pattern:/^(?=.*[a-z])(?=.*[A-Z]).+$/})} className="input" placeholder="Password" />
+          <div className='relative'>
+            <label className="label">Password</label>
+          <input type={show? 'text':'password'} {...register('password',{required:true,minLength:6, pattern:/^(?=.*[a-z])(?=.*[A-Z]).+$/})} className="input" placeholder="Password" />
              
             {
               errors.password?.type==='required' && <p className='text-red-500'>You should give password</p>
@@ -78,11 +80,14 @@ const Register = () => {
             {
               errors.password?.type==='pattern' && <p className='text-red-500'> At least one uppercase letter and one lowercase letter must in password</p>
             }
-
+            
+            <p className='absolute top-6 right-6' onClick={()=>setShow(!show)}>{show?<Eye /> : <EyeOff />}</p>
+          </div>
           
           <button className="btn btn-neutral mt-4">Sign Up
           </button>
         </fieldset>
+        <p className='font-bold'>Already have an account? <Link to={'/authlayout/login'} className='text-blue-500 underline' >Login</Link> </p>
 
         </form>
 

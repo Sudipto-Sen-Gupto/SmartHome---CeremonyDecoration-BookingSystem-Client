@@ -13,6 +13,7 @@ import Privateroute from '../PrivateRoute/Privateroute';
 import ViewDetails from '../../pages/viewDetails/ViewDetails';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import Payment from '../../pages/Dashboard/Payment';
+import AdminLayout from '../../pages/Dashboard/AdminLayout';
 
 export const router = createBrowserRouter([
     { 
@@ -66,8 +67,8 @@ export const router = createBrowserRouter([
             path:'/dashboard',
             element:  <Privateroute><Dashboard></Dashboard></Privateroute> ,
             children:[{
-                path:'payment',
-                element: <Privateroute><Payment></Payment></Privateroute>
+                index:true,
+                Component:AdminLayout
                 
             }]
         }
