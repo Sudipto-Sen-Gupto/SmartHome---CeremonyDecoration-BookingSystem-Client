@@ -39,7 +39,7 @@ const Dashboard = () => {
           </Link>
         </li>
         <li>
-          <Link to={'/dashboard'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Payment">
+          <Link to={'/dashboard/payment'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Payment">
              <CreditCard />
             <span className="is-drawer-close:hidden">Payment</span>
           </Link>

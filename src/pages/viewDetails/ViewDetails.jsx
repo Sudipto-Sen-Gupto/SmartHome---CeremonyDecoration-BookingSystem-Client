@@ -35,6 +35,7 @@ const ViewDetails = () => {
     setModal(data);
     setSelectedPrice(null);
     setValue("price", "");
+     setValue("packageName", data.title);
     modalRef.current.showModal();
   };
      
@@ -81,7 +82,7 @@ const ViewDetails = () => {
                              console.log(res.data);
                              if(res.data.insertedId){
                                      
-                                    navigate('/dashboard')
+                                    navigate('/dashboard/payment')
 
                                     Swal.fire({
                                      title: "Done",

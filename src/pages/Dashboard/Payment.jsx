@@ -54,13 +54,28 @@ const Payment = () => {
                    
                    
                  }).catch(err=>console.log(err.message))
-                              
+                                 
+           }
 
-                 
+           const handlePay=async(payment)=>{
+                    
+                  const paymentInfo={
+                            customer_email:payment.email,
+                            packageId:payment._id,
+                            totalCost:payment.totalCost,
+                            packageName:payment.packageName
+                     }
+
+                     console.log(paymentInfo);
+
+                   const res=await axiosSecure.post('/create-checkout-session',paymentInfo);
+                   
+                   window.location.href=res.data.url
+
            }
     return (
         <div>
-            <h1>{payments.length}</h1>
+            <h1 className='text-3xl font-bold text-center p-10'> My Package Booking list:{payments.length}</h1>
 
             <div>
                 <div className="overflow-x-auto">
@@ -92,11 +107,11 @@ const Payment = () => {
         <td>{payment.packageName}</td>
         <td>{payment.totalCost}</td>
         <td>{payment.userDistrict}</td>
-        <td><button className='btn btn-primary'>Pay here</button></td>
+        <td><button className='btn btn-primary'onClick={()=>handlePay(payment)}>Pay here</button></td>
         <td>{payment.createdAt}</td>
         <td>
             <button> <FilePenLine /></button>
-            <button>  <View /></button>
+            <button className='mx-2'>  <View /></button>
             <button onClick={()=>handleSearch(payment)}>  <Trash /></button>
         </td>
       </tr>

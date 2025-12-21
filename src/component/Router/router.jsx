@@ -14,6 +14,8 @@ import ViewDetails from '../../pages/viewDetails/ViewDetails';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import Payment from '../../pages/Dashboard/Payment';
 import AdminLayout from '../../pages/Dashboard/AdminLayout';
+import Successpayment from '../../pages/Dashboard/Successpayment';
+import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
 
 export const router = createBrowserRouter([
     { 
@@ -67,10 +69,21 @@ export const router = createBrowserRouter([
             path:'/dashboard',
             element:  <Privateroute><Dashboard></Dashboard></Privateroute> ,
             children:[{
-                index:true,
+                path:'payment',
                 Component:AdminLayout
                 
-            }]
+            },
+            {
+                path:'success',
+                Component:Successpayment
+            },
+            {
+                path:'cancel',
+                Component:Cancelpayment
+
+            }
+               
+        ]
         }
 
 ])
