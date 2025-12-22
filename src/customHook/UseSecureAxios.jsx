@@ -4,7 +4,7 @@ import UseAuthContext from './UseAuthContext';
 import { useNavigate } from 'react-router';
 
  const instance=axios.create({
-    baseURL:'http://localhost:3000/'
+    baseURL:'https://smart-home-and-ceremony-decoration-zeta.vercel.app'
  })
 
 const UseSecureAxios = () => {

@@ -19,6 +19,7 @@ import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
 import Decorator from '../../pages/Bedecorator/Decorator';
 import Paymenthistory from '../../pages/Dashboard/Paymenthistory';
 import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
+import Errorpage from '../../pages/errorpage/Errorpage';
 // import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 
 
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
             }
                
         ]
+        },
+        {
+            path:'*',
+            Component:Errorpage
         }
 
 ])

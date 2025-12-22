@@ -3,7 +3,7 @@ import React from 'react';
 
 
  const instance=axios.create({
-        baseURL:'http://localhost:3000/'
+        baseURL:'https://smart-home-and-ceremony-decoration-zeta.vercel.app'
     })
 const UseAxios = () => {
     
