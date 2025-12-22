@@ -18,6 +18,9 @@ import Successpayment from '../../pages/Dashboard/Successpayment';
 import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
 import Decorator from '../../pages/Bedecorator/Decorator';
 import Paymenthistory from '../../pages/Dashboard/Paymenthistory';
+import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
+// import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
+
 
 export const router = createBrowserRouter([
     { 
@@ -79,6 +82,10 @@ export const router = createBrowserRouter([
             {
                   path:'paymenthistory',
                   Component:Paymenthistory
+            },
+            {
+                   path:'approvedecor',
+                   Component:Approvedecorator
             },
             {
                 path:'success',
