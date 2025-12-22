@@ -1,4 +1,4 @@
-import { CreditCard } from 'lucide-react';
+import { ClipboardClock, CreditCard } from 'lucide-react';
 import React, { Suspense } from 'react';
 import { Link, Outlet } from 'react-router';
 import Loading from '../../component/loading/Loading';
@@ -42,6 +42,12 @@ const Dashboard = () => {
           <Link to={'/dashboard/payment'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Payment">
              <CreditCard />
             <span className="is-drawer-close:hidden">Payment</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={'/dashboard/paymenthistory'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Paymenthistory">
+                <ClipboardClock />
+            <span className="is-drawer-close:hidden">Payment History</span>
           </Link>
         </li>
 

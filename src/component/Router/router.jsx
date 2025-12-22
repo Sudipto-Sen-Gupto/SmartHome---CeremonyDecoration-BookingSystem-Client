@@ -17,6 +17,7 @@ import AdminLayout from '../../pages/Dashboard/AdminLayout';
 import Successpayment from '../../pages/Dashboard/Successpayment';
 import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
 import Decorator from '../../pages/Bedecorator/Decorator';
+import Paymenthistory from '../../pages/Dashboard/Paymenthistory';
 
 export const router = createBrowserRouter([
     { 
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
                 path:'payment',
                 Component:AdminLayout
                 
+            },
+            {
+                  path:'paymenthistory',
+                  Component:Paymenthistory
             },
             {
                 path:'success',
