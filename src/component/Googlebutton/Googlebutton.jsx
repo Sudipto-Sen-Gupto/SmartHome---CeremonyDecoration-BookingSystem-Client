@@ -2,17 +2,29 @@ import React from 'react';
 import UseAuthContext from '../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router';
+import UseSecureAxios from '../../customHook/UseSecureAxios';
 
 const Googlebutton = () => {
-
+       const axiosSecure=UseSecureAxios();
     const {googleLogin}=UseAuthContext();
      const navigate=useNavigate();
      const location=useLocation(); 
     const handleGoogle=()=>{
         googleLogin().then((res)=>{
             console.log(res);
-            toast('Logged with google successfully')
+
+            const userInfo={
+                email:res.user.email,
+                name:res.user.displayName,
+                photoURL:res.user.photoURL
+            } 
+
+            axiosSecure.post('/users',userInfo).then(()=>{
+                  
+                toast('Logged with google successfully')
             navigate(`${location.state?location.state:'/'}`)
+            })
+            
         })
     }
     return (
