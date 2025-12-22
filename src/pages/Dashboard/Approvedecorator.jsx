@@ -15,11 +15,13 @@ const Approvedecorator = () => {
                 return res.data
         }
     }) 
+          
 
-         const handleApprove=(id)=>{
-                const updateInfo={status:'approved'}
+         const decoratorUpdate=(decor,status)=>{
 
-                axiosSecure.patch(`/decorators/${id}`,updateInfo).then((res)=>{
+            const updateInfo={status:status,email:decor.email}
+
+                axiosSecure.patch(`/decorators/${decor._id}`,updateInfo).then((res)=>{
                     refetch()
                     console.log(res.data)
 
@@ -27,35 +29,27 @@ const Approvedecorator = () => {
                         Swal.fire({
   position: "top-end",
   icon: "success",
-  title: "Decorator approved",
+  title: `Decorator ${status}`,
   showConfirmButton: false,
   timer: 1500
 });
                     }
 
                 })
+            
+         }
+
+         const handleApprove=(decor)=>{
+                 
+            decoratorUpdate(decor,'approved')
+                
                 
          }
 
 
-         const handleDecline=(id)=>{
-                const updateInfo={status:'decline'}
-
-                axiosSecure.patch(`/decorators/${id}`,updateInfo).then((res)=>{
-                    refetch()
-                    console.log(res.data)
-
-                    if(res.data.modifiedCount){
-                        Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Decorator Decline",
-  showConfirmButton: false,
-  timer: 1500
-});
-                    }
-
-                })}
+         const handleDecline=(decor)=>{
+               decoratorUpdate(decor,'decline')
+            }
 
     return (
         <div>
@@ -87,7 +81,7 @@ const Approvedecorator = () => {
         <td>{decorator.district}</td>
         <td>{decorator.status}</td>
         <td className='flex gap-2'>
-              <UserCheck onClick={()=>handleApprove(decorator._id)} />    <UserRoundX onClick={()=>handleDecline(decorator._id)}/>
+              <UserCheck onClick={()=>handleApprove(decorator)} />    <UserRoundX onClick={()=>handleDecline(decorator)}/>
         </td>
       </tr> 
          })
