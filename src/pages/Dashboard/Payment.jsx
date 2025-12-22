@@ -107,7 +107,11 @@ const Payment = () => {
         <td>{payment.packageName}</td>
         <td>{payment.totalCost}</td>
         <td>{payment.userDistrict}</td>
-        <td><button className='btn btn-primary'onClick={()=>handlePay(payment)}>Pay here</button></td>
+        <td>
+              {
+                payment.payment_status==='paid'?<p className='text-green-500'>Already paid</p>:<button className='btn btn-primary'onClick={()=>handlePay(payment)}>Pay here</button>
+              }
+          </td>
         <td>{payment.createdAt}</td>
         <td>
             <button> <FilePenLine /></button>

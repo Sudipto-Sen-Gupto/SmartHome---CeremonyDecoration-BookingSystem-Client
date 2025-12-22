@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import './nav.css'
 import { LogOut, SquareChevronDown } from 'lucide-react';
 import Themetoggle from '../Theme/Themetoggle';
+import Logo from '../logo/Logo';
 const Navbar = () => {
                
             const {user,logOut}=UseAuthContext();
@@ -49,7 +50,7 @@ const Navbar = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost text-xl"><Logo></Logo></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
