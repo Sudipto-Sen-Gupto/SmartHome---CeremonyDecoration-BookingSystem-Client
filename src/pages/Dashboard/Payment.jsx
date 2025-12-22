@@ -91,7 +91,7 @@ const Payment = () => {
         <th>Package Name</th>
         <th>Cost</th>
         <th>Customer District</th>
-        <th>Payment</th>
+        <th>Payment_Status</th>
         <th>Booking date</th>
         <th>Actions</th>
       </tr>

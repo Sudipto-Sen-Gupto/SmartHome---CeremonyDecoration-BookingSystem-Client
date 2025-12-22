@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import UseAuthContext from '../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
-
+import './nav.css'
+import { LogOut, SquareChevronDown } from 'lucide-react';
+import Themetoggle from '../Theme/Themetoggle';
 const Navbar = () => {
                
             const {user,logOut}=UseAuthContext();
@@ -13,14 +15,21 @@ const Navbar = () => {
                 })
             }
 
+           
+
+
            const list= <nav className='flex flex-col gap-5 md:flex-row '>
                      
                      <NavLink to={'/'}>Home</NavLink>
                      <NavLink to={'/services'}>Services</NavLink>
-                     <NavLink to={'/coverage'}>Coverage</NavLink>
+                     <NavLink to={'/decorator'}>Be a decorator</NavLink>
                      <NavLink to={'/contact'}>Contact</NavLink>
                      <NavLink to={'/about'}>About</NavLink>
-                     <NavLink to={'/dashboard'}>Dashboard</NavLink>
+
+                     {
+                      user? <NavLink to={'/dashboard'}>Dashboard</NavLink>: ''
+                     }
+                     
            </nav>
       
     return (
@@ -54,9 +63,17 @@ const Navbar = () => {
    {
        user?<> 
            <img src={user?user.photoURL:''} title={user.displayName}
-          className="w-14 h-14 rounded-full mx-2" alt="" />          
- 
-        <button className='btn btn-primary' onClick={handleLogout}>Log Out</button></> 
+          className="w-14 h-14 rounded-full mx-2" alt="" />  
+
+
+          <div className=" dropdown dropdown-bottom dropdown-center">
+  <div tabIndex={0} role="button" className="btn m-1"><SquareChevronDown /></div>
+  <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-24 p-2 shadow-sm">
+    <li> <button className='btn btn-primary' onClick={handleLogout}><LogOut />Log Out</button></li>
+    <li>Theme <Themetoggle></Themetoggle></li>
+  </ul>
+</div>                     
+</> 
         :
         <>
         <Link className='btn btn-primary' to={'/authlayout/login'}>Login</Link>

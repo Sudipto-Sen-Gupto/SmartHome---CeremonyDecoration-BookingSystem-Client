@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Coverage = () => {
+const Decorator = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Coverage = () => {
     );
 };
 
-export default Coverage;
+export default Decorator;

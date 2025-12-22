@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import Homelayout from '../../Layout/Homelayout/Homelayout';
 import Homepage from '../../pages/homepage/Homepage';
 import Service from '../../pages/Service/Service';
-import Coverage from '../../pages/Coverage/Coverage';
+
 import Contact from '../../pages/contact/Contact';
 import About from '../../pages/aboutus/About';
 import Login from '../../Layout/Authlayout/login/Login';
@@ -16,6 +16,7 @@ import Payment from '../../pages/Dashboard/Payment';
 import AdminLayout from '../../pages/Dashboard/AdminLayout';
 import Successpayment from '../../pages/Dashboard/Successpayment';
 import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
+import Decorator from '../../pages/Bedecorator/Decorator';
 
 export const router = createBrowserRouter([
     { 
@@ -35,8 +36,9 @@ export const router = createBrowserRouter([
                element:<Privateroute>  <ViewDetails></ViewDetails> </Privateroute>
             },
             {
-                path:'coverage',
-                Component:Coverage
+                path:'decorator',
+                element:<Privateroute> <Decorator></Decorator> </Privateroute>
+               
             },
             {
                 path:'contact',
