@@ -1,4 +1,4 @@
-import { ClipboardClock, CreditCard, Signature } from 'lucide-react';
+import { BookOpenCheck, ClipboardClock, CreditCard, Signature } from 'lucide-react';
 import React, { Suspense } from 'react';
 import { Link, Outlet } from 'react-router';
 import Loading from '../../component/loading/Loading';
@@ -55,6 +55,13 @@ const Dashboard = () => {
           <Link to={'/dashboard/approvedecor'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Approvement">
                  <Signature />
             <span className="is-drawer-close:hidden">Approval</span>
+          </Link>
+          
+        </li>
+        <li>
+          <Link to={'/dashboard/usermanagement'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Usermanagement">
+                 <BookOpenCheck />
+            <span className="is-drawer-close:hidden">UserManagement</span>
           </Link>
           
         </li>

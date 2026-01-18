@@ -20,6 +20,7 @@ import Decorator from '../../pages/Bedecorator/Decorator';
 import Paymenthistory from '../../pages/Dashboard/Paymenthistory';
 import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 import Errorpage from '../../pages/errorpage/Errorpage';
+import Usermanagement from '../../pages/Dashboard/Usermanagement';
 // import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 
 
@@ -76,7 +77,7 @@ export const router = createBrowserRouter([
             path:'/dashboard',
             element:  <Privateroute><Dashboard></Dashboard></Privateroute> ,
             children:[{
-                path:'payment',
+                index:true,
                 Component:AdminLayout
                 
             },
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             {
                    path:'approvedecor',
                    Component:Approvedecorator
+            },
+            {
+                  path:'usermanagement',
+                  Component:Usermanagement
             },
             {
                 path:'success',

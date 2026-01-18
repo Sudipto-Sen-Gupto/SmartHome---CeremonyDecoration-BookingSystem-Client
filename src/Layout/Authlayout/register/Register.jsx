@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import UseAuthContext from '../../../customHook/UseAuthContext';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 import { Link, useNavigate } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import UseSecureAxios from '../../../customHook/UseSecureAxios';
+import axios from 'axios';
+// import UseAxios from '../../../customHook/UseAxios';
 
 const Register = () => {
-         
+        //  const axios=UseAxios();
    const axiosSecure=UseSecureAxios();
    const{signUp}=UseAuthContext()
     const navigate=useNavigate();
@@ -28,12 +30,12 @@ const Register = () => {
 
              const  image_URL=`https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_PHOTOAPI}`
 
-             const getImage=await axios.post(image_URL,formData);
+             const getImage=await axiosSecure.post(image_URL,formData);
              console.log(getImage.data.data.display_url);
 
             const photoURL= getImage.data.data.display_url;
 
-             signUp(email,pass,userName,photoURL).then((res)=>{
+             signUp(email,pass,userName,photoURL).then(async(res)=>{
                  
                 console.log(res);
                toast('Registration is successfully done')     
@@ -44,7 +46,7 @@ const Register = () => {
                               photoURL: photoURL,
      
     }
-                axiosSecure.post('/users',userInfo).then(()=>{
+             await   axios.post('/users',userInfo).then(()=>{
                        navigate('/') 
                 })
              }).catch(err=>console.log(err.message))
