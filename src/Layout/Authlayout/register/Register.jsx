@@ -7,7 +7,7 @@ import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 import { Link, useNavigate } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import UseSecureAxios from '../../../customHook/UseSecureAxios';
-import axios from 'axios';
+// import axios from 'axios';
 // import UseAxios from '../../../customHook/UseAxios';
 
 const Register = () => {
@@ -16,7 +16,7 @@ const Register = () => {
    const{signUp}=UseAuthContext()
     const navigate=useNavigate();
       const[show,setShow]=useState(false);
-       const {register,handleSubmit,formState:{errors}}=useForm();
+       const {register,handleSubmit,formState:{errors},reset}=useForm();
 
       const handleRegister=async(data)=>{
        
@@ -46,10 +46,10 @@ const Register = () => {
                               photoURL: photoURL,
      
     }
-             await   axios.post('/users',userInfo).then(()=>{
-                       navigate('/') 
-                })
-             }).catch(err=>console.log(err.message))
+             await   axiosSecure.post('/usersDetail',userInfo)
+                       reset()
+                   navigate('/')
+             })
         
       }
    

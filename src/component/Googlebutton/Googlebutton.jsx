@@ -19,11 +19,11 @@ const Googlebutton = () => {
                 photoURL:res.user.photoURL
             } 
 
-            axiosSecure.post('/users',userInfo).then(()=>{
+            axiosSecure.post('/users',userInfo)
                   
                 toast('Logged with google successfully')
             navigate(`${location.state?location.state:'/'}`)
-            })
+           
             
         })
     }

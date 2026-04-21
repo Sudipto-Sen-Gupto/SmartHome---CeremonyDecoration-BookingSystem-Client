@@ -4,7 +4,7 @@ import Payment from './Payment';
 const AdminLayout = () => {
     return (
         <div>
-            <Payment></Payment>
+           
         </div>
     );
 };
