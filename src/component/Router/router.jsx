@@ -21,6 +21,7 @@ import Paymenthistory from '../../pages/Dashboard/Paymenthistory';
 import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 import Errorpage from '../../pages/errorpage/Errorpage';
 import Usermanagement from '../../pages/Dashboard/Usermanagement';
+import AdminPrivateRoute from '../PrivateRoute/AdminPrivateRoute';
 // import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 
 
@@ -95,7 +96,7 @@ export const router = createBrowserRouter([
             },
             {
                   path:'usermanagement',
-                  Component:Usermanagement
+                  element:<AdminPrivateRoute><Usermanagement></Usermanagement></AdminPrivateRoute>
             },
             {
                 path:'success',
