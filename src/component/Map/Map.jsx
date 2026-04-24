@@ -40,7 +40,7 @@ const Map = () => {
      }
 
     return (
-        <div className='mt-10'>
+        <div className='my-20'>
 
             <div>
                 {/* location={locations.length} */}

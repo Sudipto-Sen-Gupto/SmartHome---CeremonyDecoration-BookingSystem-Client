@@ -5,6 +5,7 @@ import HomeDecorCard from '../../component/homeDecor/HomeDecorCard';
 import Review from '../reviews/review';
 import Slider from '../../component/slider/Slider';
 import Gallery from '../../component/inspirational/Gallery';
+import HowItWorks from '../../component/works/HowItWorks';
 
 const Homepage = () => {
     return (
@@ -14,6 +15,7 @@ const Homepage = () => {
          
             <HomeDecorCard></HomeDecorCard>
                <Gallery></Gallery>
+               <HowItWorks></HowItWorks>
            <Review></Review>
             <Map></Map>
         </div>
