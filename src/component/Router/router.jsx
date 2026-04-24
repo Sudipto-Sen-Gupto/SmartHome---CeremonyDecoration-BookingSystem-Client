@@ -22,6 +22,7 @@ import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 import Errorpage from '../../pages/errorpage/Errorpage';
 import Usermanagement from '../../pages/Dashboard/Usermanagement';
 import AdminPrivateRoute from '../PrivateRoute/AdminPrivateRoute';
+import DashboardHome from '../../pages/Dashboard/DashBoardHome';
 // import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
 
 
@@ -79,7 +80,7 @@ export const router = createBrowserRouter([
             element:  <Privateroute><Dashboard></Dashboard></Privateroute> ,
             children:[{
                 index:true,
-                Component:AdminLayout
+                Component:DashboardHome
                 
             },
             {

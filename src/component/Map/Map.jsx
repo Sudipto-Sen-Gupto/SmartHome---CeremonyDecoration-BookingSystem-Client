@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import UseAxios from '../../customHook/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { Timer } from 'lucide-react';
+import './map.css'
 const Map = () => {
        
       const mapRef=useRef(null)
@@ -40,7 +41,7 @@ const Map = () => {
      }
 
     return (
-        <div className='my-20'>
+        <div className="map relative z-0">
 
             <div>
                 {/* location={locations.length} */}

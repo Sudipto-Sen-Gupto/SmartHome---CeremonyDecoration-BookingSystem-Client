@@ -6,10 +6,11 @@ import Review from '../reviews/review';
 import Slider from '../../component/slider/Slider';
 import Gallery from '../../component/inspirational/Gallery';
 import HowItWorks from '../../component/works/HowItWorks';
+import CTA from '../../component/CTN/CTA';
 
 const Homepage = () => {
     return (
-        <div>
+        <div >
             <Herosection></Herosection>
             <Slider></Slider>
          
@@ -18,6 +19,7 @@ const Homepage = () => {
                <HowItWorks></HowItWorks>
            <Review></Review>
             <Map></Map>
+            <CTA></CTA>
         </div>
     );
 };
