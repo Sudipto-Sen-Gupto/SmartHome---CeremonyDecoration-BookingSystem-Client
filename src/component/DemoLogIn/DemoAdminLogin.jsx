@@ -15,7 +15,7 @@ const DemoAdminLogin = () => {
       const result = await userLogin(email, password);
       navigate('/')
     //   console.log("Admin logged in:", result.user);
-   toast(`Log in with Demo id ${result.user.email}`)
+   toast(`Log in with Demo admin id ${result.user.email}`)
     } catch (error) {
       console.error("Demo login failed:", error.message);
     }
