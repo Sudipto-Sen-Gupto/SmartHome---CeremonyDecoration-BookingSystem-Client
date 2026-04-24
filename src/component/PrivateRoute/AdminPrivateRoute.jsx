@@ -2,8 +2,9 @@ import React from 'react';
 
 import useRole from '../../customHook/useRole';
 import UseAuthContext from '../../customHook/UseAuthContext';
-import Errorpage from '../../pages/errorpage/Errorpage';
+
 import Loading from '../loading/Loading';
+import Error from '../error/Error';
 
 const AdminPrivateRoute = ({children}) => {
       const {loader}=UseAuthContext()
@@ -14,7 +15,7 @@ const AdminPrivateRoute = ({children}) => {
          }
 
       if(personRole!=="admin"){
-        return <Errorpage></Errorpage>
+        return <Error></Error>
       }
 
 

@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 const Logo = () => {
     return (
         <div >
-            <Link to={'/'} className='flex items-center'>
+            <Link to={'/'} className='flex items-center gap-4'>
                        <img className='w-10 h-10' src={logo} alt="" />
-            <h1>Home Decor Hub</h1>
+            <h1 className='text-white font-serif'>Home Decor Hub</h1>
             </Link>
         </div>
     );

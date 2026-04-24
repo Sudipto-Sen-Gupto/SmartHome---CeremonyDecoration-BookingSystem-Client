@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
             },
             {
                    path:'approvedecor',
-                   Component:Approvedecorator
+                   element:<AdminPrivateRoute><Approvedecorator></Approvedecorator></AdminPrivateRoute>
             },
             {
                   path:'usermanagement',

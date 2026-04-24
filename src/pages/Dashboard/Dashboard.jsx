@@ -2,8 +2,10 @@ import { BookOpenCheck, ClipboardClock, CreditCard, Signature } from 'lucide-rea
 import React, { Suspense } from 'react';
 import { Link, Outlet } from 'react-router';
 import Loading from '../../component/loading/Loading';
+import useRole from '../../customHook/useRole';
 
 const Dashboard = () => {
+         const {personRole}=useRole()
     return (
         <div className='w-400 mx-auto'>
             <div className="drawer lg:drawer-open">
@@ -51,7 +53,9 @@ const Dashboard = () => {
           </Link>
           
         </li>
-        <li>
+        {
+          personRole==="admin" && <div>
+            <li>
           <Link to={'/dashboard/approvedecor'} className="is-drawer-close:tooltip is-drawer-close:tooltip-right"  data-tip="Approvement">
                  <Signature />
             <span className="is-drawer-close:hidden">Approval</span>
@@ -65,6 +69,8 @@ const Dashboard = () => {
           </Link>
           
         </li>
+          </div>
+        }
 
         
       </ul>

@@ -40,15 +40,15 @@ const Map = () => {
      }
 
     return (
-        <div >
+        <div className='mt-10'>
 
             <div>
                 {/* location={locations.length} */}
             </div>
 
-            <div>
-                <label className="input">
-      <form onSubmit={handleSearch} className='flex items-center'>
+            <div >
+                <label className="input ">
+      <form onSubmit={handleSearch} className='flex items-center '>
         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
