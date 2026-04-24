@@ -13,7 +13,7 @@ import Privateroute from '../PrivateRoute/Privateroute';
 import ViewDetails from '../../pages/viewDetails/ViewDetails';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import Payment from '../../pages/Dashboard/Payment';
-import AdminLayout from '../../pages/Dashboard/AdminLayout';
+// import AdminLayout from '../../pages/Dashboard/AdminLayout';
 import Successpayment from '../../pages/Dashboard/Successpayment';
 import Cancelpayment from '../../pages/Dashboard/Cancelpayment';
 import Decorator from '../../pages/Bedecorator/Decorator';
@@ -23,7 +23,7 @@ import Errorpage from '../../pages/errorpage/Errorpage';
 import Usermanagement from '../../pages/Dashboard/Usermanagement';
 import AdminPrivateRoute from '../PrivateRoute/AdminPrivateRoute';
 import DashboardHome from '../../pages/Dashboard/DashBoardHome';
-// import Approvedecorator from '../../pages/Dashboard/Approvedecorator';
+
 
 
 export const router = createBrowserRouter([

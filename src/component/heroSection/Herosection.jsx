@@ -12,7 +12,7 @@ const texts = [
 const Herosection = () => {
   return (
     <section
-      className="relative h-[850px] mt-14 bg-cover bg-center flex items-center"
+      className="relative h-[850px]  bg-cover bg-center flex items-center"
       style={{ backgroundImage: `url(${banner})` }}
     >
       {/* Dark Overlay */}

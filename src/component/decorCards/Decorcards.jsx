@@ -3,22 +3,23 @@ import { useQuery } from '@tanstack/react-query';
 import UseAxios from '../../customHook/UseAxios';
 import Decorcard from '../decorCard/Decorcard';
 import Loading from '../loading/Loading';
+import DecorCardSkeleton from '../Skeleton/DecorCardSkeleton';
 
 const Decorcards = () => {
   const [totalPackages, setTotalPackages] = useState(0);
   const [page, setPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [order, setOrder] = useState('asc');
-
+  const [search,setSearch]=useState('')
   const limit = 5;
   const axiosInstance = UseAxios();
 
   const { data: decorPackages = [], isLoading } = useQuery({
-    queryKey: ['decorationPackage', currentPage, order],
+    queryKey: ['decorationPackage', currentPage, order,search],
     keepPreviousData: true,
     queryFn: async () => {
       const res = await axiosInstance.get(
-        `/decorPack?limit=${limit}&skip=${currentPage * limit}&sort=minPrice&order=${order}`
+       `/decorPack?limit=${limit}&skip=${currentPage * limit}&sort=minPrice&order=${order}&search=${search}`
       );
 
       setPage(Math.ceil(res.data.total / limit));
@@ -29,7 +30,15 @@ const Decorcards = () => {
   });
 
   if(isLoading){
-    return <Loading></Loading>
+   return (
+    <div className="max-w-8xl mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {[...Array(5)].map((_, i) => (
+          <DecorCardSkeleton key={i} />
+        ))}
+      </div>
+    </div>
+  );
   }
 
   return (
@@ -50,7 +59,9 @@ const Decorcards = () => {
           type="text"
           placeholder="Search package..."
           className="input input-bordered w-full md:w-1/3"
-        />
+        value={search} onChange={(e)=>{ setSearch(e.target.value) 
+        
+        setCurrentPage(0)}}/>
 
         <select
           className="select select-bordered w-full md:w-1/4"

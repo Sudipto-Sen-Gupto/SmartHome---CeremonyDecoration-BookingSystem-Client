@@ -7,6 +7,7 @@ import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 import { Link, useNavigate } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import UseSecureAxios from '../../../customHook/UseSecureAxios';
+import DemoAdminLogin from '../../../component/DemoLogIn/DemoAdminLogin';
 // import axios from 'axios';
 // import UseAxios from '../../../customHook/UseAxios';
 
@@ -105,6 +106,7 @@ const Register = () => {
         </form>
 
         <Googlebutton></Googlebutton>
+        <DemoAdminLogin></DemoAdminLogin>
       </div>
     </div>
   </div>

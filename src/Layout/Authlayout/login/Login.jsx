@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Googlebutton from '../../../component/Googlebutton/Googlebutton';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { Eye, EyeOff } from 'lucide-react';
+import DemoAdminLogin from '../../../component/DemoLogIn/DemoAdminLogin';
 
 const Login = () => {
          
@@ -71,6 +72,7 @@ const Login = () => {
              </form>
 
          <Googlebutton></Googlebutton>
+          <DemoAdminLogin></DemoAdminLogin>
       </div>
     </div>
   </div>

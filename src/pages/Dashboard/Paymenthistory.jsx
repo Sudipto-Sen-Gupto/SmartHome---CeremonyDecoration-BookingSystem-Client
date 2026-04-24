@@ -41,7 +41,7 @@ const Paymenthistory = () => {
 
       {
         history.map((his,index)=>{
-            return  <tr>
+            return  <tr key={index}>
         <th>{index+1}</th>
         <td>{his.packageName}</td>
         <td>{his.customerEmail}</td>
